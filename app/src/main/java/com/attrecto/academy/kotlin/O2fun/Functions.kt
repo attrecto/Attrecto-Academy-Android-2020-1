@@ -32,9 +32,17 @@ fun sumSimple(x: Int, y: Int) = x + y
 fun sum(x: Int, y: Int, z: Int = 0) = x + y + z
 
 // De mi van, ha a középső paraméter default?
-fun printDetails(name : String, email: String = "", phone : String){
+fun printDetails(name: String, email: String = "", phone: String) {
     println("Name: $name, email: $email, phone: $phone")
 }
+
+// 4. FELADAT
+// Írj egy hello függvényt, aminek van egy name paramétere "World" alapértelmezett értékkel, és kiírja hogy "Hello (név paraméter)!"
+
+fun hello(name: String = "World") {
+    println("Hello $name")
+}
+
 
 fun main() {
     hello()
