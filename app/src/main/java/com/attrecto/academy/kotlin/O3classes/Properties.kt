@@ -16,16 +16,17 @@ class Member(val id: Int, var name: String, val yearOfBirth: Int) {
             field = value
         }
 
+    // 6. FELADAT készíts egy "adult" property-t, ami megmondja hogy a member felnőtt-e vagy sem  (18 >=)
+
     val adult : Boolean
         get() = age >= 18
 
     // Nem csak property-jei, metódusai is lehetnek egy osztálynak
     fun customerAsString() : String {
-        return "$id - $name"
+        return  "$id - $name"
     }
 }
 
-// 6. FELADAT készíts egy "adult" property-t, ami megmondja hogy a member felnőtt-e vagy sem  (18 >=)
 
 
 fun main() {
