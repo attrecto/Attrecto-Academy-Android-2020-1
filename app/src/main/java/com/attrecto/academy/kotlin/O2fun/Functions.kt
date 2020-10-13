@@ -1,7 +1,5 @@
 package com.attrecto.academy.kotlin.O2fun
 
-import android.provider.ContactsContract
-
 // A java-val ellentétben (ahol a függvényeknek egy-egy osztályban kellett lennie) itt lehet függvény osztály nélkül is.
 
 // Egyszerű függvény, paraméter, és visszatérési érték nélkül
