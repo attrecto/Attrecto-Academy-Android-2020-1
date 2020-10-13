@@ -18,17 +18,21 @@ class CustomerOld {
 class Customer(
     val id: Int,
     // Mit a függvények paramétereinál itt is lehet alapértelmezett értéke
-    var name: String = ""){
+    var name: String = ""
+) {
 
     // A létrehozásnál még lefut az init blokk is
-    init{
+    init {
         name = name.toUpperCase(Locale.getDefault())
     }
 
     // Tudunk secondary konstruktor is készíteni, de ennek mindig meg kell hívnia a primary konstruktort
-    constructor(id: Int, firstName: String, lastName : String) : this(id, "$firstName $lastName") {
+    constructor(id: Int, firstName: String, lastName: String) : this(id , "$firstName $lastName") {
     }
 }
+
+// 5. FELADAT
+// Készíts egy Member osztályt, id : Int, name : String, yearOfBirth : Int paraméterekkel
 
 fun main() {
     // Nem kell new keyword
