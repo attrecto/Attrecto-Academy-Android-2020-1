@@ -1,5 +1,7 @@
 package com.attrecto.academy.kotlin.O3classes
 
+// Class visibility
+
 class Car {
     // A publikus visibility mindenhonnan látható, ez az alapértelmezett láthatóság, ki sem kell írni
     public val name: String = ""
