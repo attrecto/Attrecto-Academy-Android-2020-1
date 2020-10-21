@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.attrecto.academy.MainActivity" />
+            type="com.attrecto.academy.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
