@@ -28,6 +28,15 @@ class MainActivity : AppCompatActivity() {
                 startActivity(i)
             }
         })
+
+        viewModel.openDetailEvent.observe(this, Observer<Event<String>> {
+            it.getContentIfNotHandled()?.let {
+                val i = Intent(this, DetailActivity::class.java).apply {
+                    putExtra(DetailActivity.ID, it)
+                }
+                startActivity(i)
+            }
+        })
     }
 
     private fun createViewModel() = ViewModelProvider(this, viewModelFactory {

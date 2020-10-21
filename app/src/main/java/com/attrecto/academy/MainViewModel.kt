@@ -16,6 +16,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val openBrowserEvent: MutableLiveData<Event<String>> = MutableLiveData()
 
+    val openDetailEvent: MutableLiveData<Event<String>> = MutableLiveData()
+
     fun showToast(name : String) {
         Toast.makeText(context, context.getString(R.string.hello_world, name), Toast.LENGTH_SHORT).show()
     }
@@ -24,4 +26,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         openBrowserEvent.value = Event(name.value ?: "")
     }
 
+    fun openDetail(){
+        openDetailEvent.value = Event(name.value ?: "")
+    }
 }
