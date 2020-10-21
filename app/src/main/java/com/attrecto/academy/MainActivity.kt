@@ -14,11 +14,14 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = this
+        binding.lifecycleOwner = this
     }
 
-    var name: String = "Világ"
+    // Megfigyelhető livedata
+    var name: MutableLiveData<String> = MutableLiveData("Világ")
 
     fun showToast(name : String) {
         Toast.makeText(this, getString(R.string.hello_world, name), Toast.LENGTH_SHORT).show()
+        this.name.value = ""
     }
 }
