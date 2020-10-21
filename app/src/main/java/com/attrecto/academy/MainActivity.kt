@@ -1,11 +1,12 @@
 package com.attrecto.academy
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.attrecto.academy.databinding.ActivityMainBinding
 
 
@@ -15,8 +16,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.viewModel = createViewModel()
+        val viewModel = createViewModel()
+
+        binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        viewModel.openBrowserEvent.observe(this, Observer<Event<String>> {
+            it.getContentIfNotHandled()?.let {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(it)
+                startActivity(i)
+            }
+        })
     }
 
     private fun createViewModel() = ViewModelProvider(this, viewModelFactory {
