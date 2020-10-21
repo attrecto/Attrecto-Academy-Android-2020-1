@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Akadémia</string>
+    <string name="show_toast">Kis felugró ablak</string>
+    <string name="hello_world">Hello világ</string>
+</resources>
