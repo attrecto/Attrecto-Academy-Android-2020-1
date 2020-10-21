@@ -2,5 +2,5 @@
 <resources>
     <string name="app_name">Akadémia</string>
     <string name="show_toast">Kis felugró ablak</string>
-    <string name="hello_world">Hello világ</string>
+    <string name="hello_world">Hello %s</string>
 </resources>

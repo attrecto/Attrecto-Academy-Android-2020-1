@@ -4,16 +4,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.attrecto.academy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = this
     }
 
-    fun showToast(){
-        Toast.makeText(this, R.string.hello_world, Toast.LENGTH_SHORT).show()
+    var name: String = "Világ"
+
+    fun showToast(name : String) {
+        Toast.makeText(this, getString(R.string.hello_world, name), Toast.LENGTH_SHORT).show()
     }
 }
