@@ -3,15 +3,17 @@ package com.attrecto.academy
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.databinding.DataBindingUtil
+import com.attrecto.academy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.viewModel = this
+    }
 
-        toast_button.setOnClickListener {
-            Toast.makeText(this, R.string.hello_world, Toast.LENGTH_SHORT).show()
-        }
+    fun showToast(){
+        Toast.makeText(this, R.string.hello_world, Toast.LENGTH_SHORT).show()
     }
 }
