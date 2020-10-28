@@ -2,6 +2,7 @@ package com.attrecto.academy.screen.main
 
 import android.app.Application
 import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.attrecto.academy.repository.MovieHeadlineRepository
@@ -17,11 +18,15 @@ class MainViewModel(
     // Megfigyelhető livedata
     val pattern: MutableLiveData<String> = MutableLiveData("last")
 
-    val movies: MutableLiveData<String> = MutableLiveData()
+    val movies: MutableLiveData<List<MovieHeadlineAdapter.ViewContent>> = MutableLiveData()
 
     fun onSearch() {
         val pattern = pattern.value ?: ""
-        movies.value = movieHeadlineRepository.search(pattern).toString()
+        movies.value = movieHeadlineRepository.search(pattern).map {
+            MovieHeadlineAdapter.ViewContent(it.name, it.year, {
+                Toast.makeText(context, it.imdbId, Toast.LENGTH_LONG).show()
+            })
+        }
     }
 
 
