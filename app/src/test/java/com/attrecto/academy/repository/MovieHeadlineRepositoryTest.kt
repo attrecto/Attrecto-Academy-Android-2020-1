@@ -1,7 +1,6 @@
 package com.attrecto.academy.repository
 
-import com.attrecto.academy.screen.domain.MovieHeadline
-import com.attrecto.academy.screen.repository.MovieHeadlineRepository
+import com.attrecto.academy.domain.MovieHeadline
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 

@@ -1,6 +1,6 @@
-package com.attrecto.academy.screen.repository
+package com.attrecto.academy.repository
 
-import com.attrecto.academy.screen.domain.MovieHeadline
+import com.attrecto.academy.domain.MovieHeadline
 
 class MovieHeadlineRepository(private val movieHeadlines: List<MovieHeadline> = emptyList()) {
 
