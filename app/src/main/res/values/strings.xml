@@ -1,7 +1,4 @@
 <resources>
     <string name="app_name">Academy</string>
-    <string name="hello_world">Hello %s</string>
-    <string name="show_toast">Show toast</string>
-    <string name="open_browser">Open browser</string>
-    <string name="open_detail">Open detail</string>
+    <string name="search">Search</string>
 </resources>

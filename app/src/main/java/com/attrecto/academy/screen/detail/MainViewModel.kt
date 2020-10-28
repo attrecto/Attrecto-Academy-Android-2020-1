@@ -2,35 +2,27 @@ package com.attrecto.academy.screen.detail
 
 import android.app.Application
 import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.attrecto.academy.utils.Event
-import com.attrecto.academy.R
+import com.attrecto.academy.repository.MovieHeadlineRepository
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel(
+    application: Application,
+    val movieHeadlineRepository: MovieHeadlineRepository
+) : AndroidViewModel(application) {
 
-    private val context : Context
+    private val context: Context
         get() = getApplication()
 
     // Megfigyelhető livedata
-    val name: MutableLiveData<String> = MutableLiveData("https://google.com")
+    val pattern: MutableLiveData<String> = MutableLiveData("last")
 
-    val openBrowserEvent: MutableLiveData<Event<String>> = MutableLiveData()
+    val movies: MutableLiveData<String> = MutableLiveData()
 
-    val openDetailEvent: MutableLiveData<Event<String>> = MutableLiveData()
-
-    fun showToast(name : String) {
-        Toast.makeText(context, context.getString(R.string.hello_world, name), Toast.LENGTH_SHORT).show()
+    fun onSearch() {
+        val pattern = pattern.value ?: ""
+        movies.value = movieHeadlineRepository.search(pattern).toString()
     }
 
-    fun openBrowser(){
-        openBrowserEvent.value =
-            Event(name.value ?: "")
-    }
 
-    fun openDetail(){
-        openDetailEvent.value =
-            Event(name.value ?: "")
-    }
 }

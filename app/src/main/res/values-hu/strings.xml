@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Akadémia</string>
-    <string name="show_toast">Kis felugró ablak</string>
-    <string name="hello_world">Hello %s</string>
-    <string name="open_browser">Böngésző</string>
-    <string name="open_detail">Részletek</string>
+    <string name="search">Keresés</string>
 </resources>
