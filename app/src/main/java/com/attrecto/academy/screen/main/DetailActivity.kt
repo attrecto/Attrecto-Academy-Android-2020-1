@@ -1,7 +1,8 @@
-package com.attrecto.academy
+package com.attrecto.academy.screen.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.attrecto.academy.R
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {

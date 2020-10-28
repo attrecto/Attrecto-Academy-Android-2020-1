@@ -1,4 +1,4 @@
-package com.attrecto.academy
+package com.attrecto.academy.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,4 +1,4 @@
-package com.attrecto.academy
+package com.attrecto.academy.screen.detail
 
 import android.content.Intent
 import android.net.Uri
@@ -7,7 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.attrecto.academy.utils.Event
+import com.attrecto.academy.R
 import com.attrecto.academy.databinding.ActivityMainBinding
+import com.attrecto.academy.screen.main.DetailActivity
+import com.attrecto.academy.utils.viewModelFactory
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +19,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)
+            DataBindingUtil.setContentView(this,
+                R.layout.activity_main
+            )
         val viewModel = createViewModel()
 
         binding.viewModel = viewModel
@@ -39,7 +45,8 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun createViewModel() = ViewModelProvider(this, viewModelFactory {
-        MainViewModel(application)
-    }).get(MainViewModel::class.java)
+    private fun createViewModel() = ViewModelProvider(this,
+        viewModelFactory {
+            MainViewModel(application)
+        }).get(MainViewModel::class.java)
 }

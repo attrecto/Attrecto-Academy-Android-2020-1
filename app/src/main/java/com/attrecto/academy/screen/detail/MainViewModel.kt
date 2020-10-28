@@ -1,10 +1,12 @@
-package com.attrecto.academy
+package com.attrecto.academy.screen.detail
 
 import android.app.Application
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.attrecto.academy.utils.Event
+import com.attrecto.academy.R
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -23,10 +25,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun openBrowser(){
-        openBrowserEvent.value = Event(name.value ?: "")
+        openBrowserEvent.value =
+            Event(name.value ?: "")
     }
 
     fun openDetail(){
-        openDetailEvent.value = Event(name.value ?: "")
+        openDetailEvent.value =
+            Event(name.value ?: "")
     }
 }
