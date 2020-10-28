@@ -5,8 +5,11 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.attrecto.academy.model.MovieHeadline
 import com.attrecto.academy.repository.MovieHeadlineRepository
+import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 class MainViewModel(
     application: Application,
@@ -23,10 +26,20 @@ class MainViewModel(
 
     val showEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
 
+    val showProgressBar: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun onSearch() {
         val pattern = pattern.value ?: ""
-        val result = movieHeadlineRepository.search(pattern)
-        handleResult(result)
+        load(pattern)
+    }
+
+    private fun load(pattern: String) {
+        viewModelScope.launch {
+            showProgressBar.value = true
+            val result = movieHeadlineRepository.search(pattern)
+            handleResult(result)
+            showProgressBar.value = false
+        }
     }
 
     private fun handleResult(result: List<MovieHeadline>) {
