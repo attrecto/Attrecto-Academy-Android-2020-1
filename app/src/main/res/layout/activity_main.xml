@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screen.detail.MainActivity">
+    tools:context=".screen.main.MainActivity">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.attrecto.academy.screen.detail.MainViewModel" />
+            type="com.attrecto.academy.screen.main.MainViewModel" />
     </data>
 
     <LinearLayout

@@ -1,4 +1,4 @@
-package com.attrecto.academy.screen.detail
+package com.attrecto.academy.screen.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import com.attrecto.academy.R
 import com.attrecto.academy.di.createMovieHeaderRepository
 import com.attrecto.academy.databinding.ActivityMainBinding
 import com.attrecto.academy.di.createMainViewModel
+import com.attrecto.academy.screen.detail.DetailActivity
 import com.attrecto.academy.utils.viewModelFactory
 
 

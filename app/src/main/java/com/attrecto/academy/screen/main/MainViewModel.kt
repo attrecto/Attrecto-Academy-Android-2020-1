@@ -1,4 +1,4 @@
-package com.attrecto.academy.screen.detail
+package com.attrecto.academy.screen.main
 
 import android.app.Application
 import android.content.Context
