@@ -1,4 +1,4 @@
-package com.attrecto.academy.screen.main
+package com.attrecto.academy.screen.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

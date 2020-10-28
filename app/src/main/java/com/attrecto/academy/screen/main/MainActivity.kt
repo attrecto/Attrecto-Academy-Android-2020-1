@@ -1,4 +1,4 @@
-package com.attrecto.academy.screen.detail
+package com.attrecto.academy.screen.main
 
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.attrecto.academy.utils.Event
 import com.attrecto.academy.R
 import com.attrecto.academy.databinding.ActivityMainBinding
-import com.attrecto.academy.screen.main.DetailActivity
+import com.attrecto.academy.screen.detail.DetailActivity
 import com.attrecto.academy.utils.viewModelFactory
 
 
