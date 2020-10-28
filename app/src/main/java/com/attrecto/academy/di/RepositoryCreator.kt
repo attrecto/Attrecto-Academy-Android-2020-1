@@ -1,6 +1,6 @@
 package com.attrecto.academy.di
 
-import com.attrecto.academy.domain.MovieHeadline
+import com.attrecto.academy.model.MovieHeadline
 import com.attrecto.academy.repository.MovieHeadlineRepository
 
 fun createMovieHeaderRepository() = MovieHeadlineRepository(
