@@ -5,6 +5,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.attrecto.academy.model.MovieHeadline
 import com.attrecto.academy.repository.MovieHeadlineRepository
 
 class MainViewModel(
@@ -20,14 +21,21 @@ class MainViewModel(
 
     val movies: MutableLiveData<List<MovieHeadlineAdapter.ViewContent>> = MutableLiveData()
 
+    val showEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun onSearch() {
         val pattern = pattern.value ?: ""
-        movies.value = movieHeadlineRepository.search(pattern).map {
-            MovieHeadlineAdapter.ViewContent(it.name, it.year, {
-                Toast.makeText(context, it.imdbId, Toast.LENGTH_LONG).show()
-            })
-        }
+        val result = movieHeadlineRepository.search(pattern)
+        handleResult(result)
     }
 
+    private fun handleResult(result: List<MovieHeadline>) {
+        showEmpty.value = result.isEmpty()
+        movies.value = result.map { it.asViewContent() }
+    }
+
+    private fun MovieHeadline.asViewContent() = MovieHeadlineAdapter.ViewContent(name, year, {
+        Toast.makeText(context, imdbId, Toast.LENGTH_LONG).show()
+    })
 
 }

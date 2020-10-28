@@ -6,33 +6,52 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.attrecto.academy.screen.main.MainViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/pattern_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.pattern}" />
+            android:text="@={viewModel.pattern}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{ () -> viewModel.onSearch() }"
-            android:text="@string/search" />
+            android:text="@string/search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pattern_edit_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:items="@{viewModel.movies}" />
+            android:layout_height="0dp"
+            app:items="@{viewModel.movies}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_button" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMPTY"
+            android:visibility="@{ viewModel.showEmpty ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_button" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

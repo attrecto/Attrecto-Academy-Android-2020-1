@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">Akadémia</string>
     <string name="search">Keresés</string>
+    <string name="no_results">Nincs találat</string>
+
 </resources>
