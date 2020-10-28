@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.attrecto.academy.model.MovieHeadline
 import com.attrecto.academy.repository.MovieHeadlineRepository
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
@@ -22,19 +23,24 @@ class MainViewModel(
     // Megfigyelhető livedata
     val pattern: MutableLiveData<String> = MutableLiveData("last")
 
+    private val nullSafePattern: String
+        get() = pattern.value ?: ""
+
     val movies: MutableLiveData<List<MovieHeadlineAdapter.ViewContent>> = MutableLiveData()
 
     val showEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val showProgressBar: MutableLiveData<Boolean> = MutableLiveData(false)
 
+    var job: Job? = null
+
     fun onSearch() {
-        val pattern = pattern.value ?: ""
-        load(pattern)
+        job?.cancel()
+        job = load(nullSafePattern)
     }
 
-    private fun load(pattern: String) {
-        viewModelScope.launch {
+    private fun load(pattern: String): Job {
+        return viewModelScope.launch {
             showProgressBar.value = true
             val result = movieHeadlineRepository.search(pattern)
             handleResult(result)
