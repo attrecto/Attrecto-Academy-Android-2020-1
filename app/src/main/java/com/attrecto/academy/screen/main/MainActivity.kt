@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.attrecto.academy.R
 import com.attrecto.academy.databinding.ActivityMainBinding
 import com.attrecto.academy.di.createMainViewModel
+import com.attrecto.academy.screen.detail.DetailActivity
 import com.attrecto.academy.utils.viewModelFactory
 
 
@@ -33,15 +34,10 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.onMovieHeaderlineClickEvent.observe(this, Observer {
             it.getContentIfNotHandled()?.let {
-                val i = Intent(Intent.ACTION_VIEW, createSearchUriFor(it))
-                this@MainActivity.startActivity(i)
+                this@MainActivity.startActivity(DetailActivity.createLaunchIntent(this@MainActivity, it))
             }
         })
     }
-
-    private fun createSearchUriFor(query : String) = Uri.parse("https://google.com/search")
-        .buildUpon()
-        .appendQueryParameter("q", query).build()
 
     private fun createViewModel() = ViewModelProvider(this,
         viewModelFactory {
