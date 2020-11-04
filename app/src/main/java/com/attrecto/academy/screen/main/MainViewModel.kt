@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.attrecto.academy.model.MovieHeadline
 import com.attrecto.academy.repository.MovieHeadlineRepository
+import com.attrecto.academy.utils.Event
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
@@ -32,6 +33,8 @@ class MainViewModel(
 
     val showProgressBar: MutableLiveData<Boolean> = MutableLiveData(false)
 
+    val onMovieHeaderlineClickEvent: MutableLiveData<Event<String>> = MutableLiveData()
+
     var job: Job? = null
 
     fun onSearch() {
@@ -54,7 +57,7 @@ class MainViewModel(
     }
 
     private fun MovieHeadline.asViewContent() = MovieHeadlineAdapter.ViewContent(name, year, {
-        Toast.makeText(context, imdbId, Toast.LENGTH_LONG).show()
+        onMovieHeaderlineClickEvent.value = Event(this.imdbId)
     })
 
 }
