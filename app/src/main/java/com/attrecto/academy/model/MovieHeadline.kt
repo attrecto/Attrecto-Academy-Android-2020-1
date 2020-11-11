@@ -7,5 +7,5 @@ data class MovieHeadline(
     val name: String,
     @SerializedName("Year")
     val year: String,
-    @SerializedName("imdbId")
+    @SerializedName("imdbID")
     val imdbId: String)

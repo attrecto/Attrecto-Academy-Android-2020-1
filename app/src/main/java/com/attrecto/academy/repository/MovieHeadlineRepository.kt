@@ -1,13 +1,12 @@
 package com.attrecto.academy.repository
 
+import com.attrecto.academy.datasource.MovieService
 import com.attrecto.academy.model.MovieHeadline
-import kotlinx.coroutines.delay
 
-class MovieHeadlineRepository(private val movieHeadlines: List<MovieHeadline> = emptyList()) {
+class MovieHeadlineRepository(private val service : MovieService) {
 
     suspend fun search(title: String): List<MovieHeadline> {
-        delay(1000)
-        return movieHeadlines.filter { it.name.contains(title) }
+        return service.search(title, "cd268ceb").Search
     }
 }
 
