@@ -8,4 +8,6 @@ data class MovieHeadline(
     @SerializedName("Year")
     val year: String,
     @SerializedName("imdbID")
-    val imdbId: String)
+    val imdbId: String,
+    @SerializedName("Poster")
+    val image: String)

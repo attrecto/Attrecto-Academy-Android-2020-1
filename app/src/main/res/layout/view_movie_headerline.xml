@@ -11,26 +11,39 @@
             type="com.attrecto.academy.screen.main.MovieHeadlineAdapter.ViewContent" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:onClick="@{()->viewContent.onClick.invoke() }"
-        android:orientation="vertical"
         android:padding="@dimen/margin_small">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_view"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/margin_small"
+            app:image="@{viewContent.image}"/>
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
+            android:id="@+id/title_view"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewContent.title}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_view"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewContent.year}"
+            app:layout_constraintTop_toBottomOf="@id/title_view"
+            app:layout_constraintStart_toEndOf="@id/image_view"
             android:textAppearance="?attr/textAppearanceListItemSmall" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

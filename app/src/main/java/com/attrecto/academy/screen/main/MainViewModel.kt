@@ -65,7 +65,7 @@ class MainViewModel(
         movies.value = result.map { it.asViewContent() }
     }
 
-    private fun MovieHeadline.asViewContent() = MovieHeadlineAdapter.ViewContent(name, year, {
+    private fun MovieHeadline.asViewContent() = MovieHeadlineAdapter.ViewContent(name, year, image, {
         onMovieHeaderlineClickEvent.value = Event(this.imdbId)
     })
 
