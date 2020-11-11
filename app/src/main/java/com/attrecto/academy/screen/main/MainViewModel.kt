@@ -11,6 +11,7 @@ import com.attrecto.academy.repository.MovieHeadlineRepository
 import com.attrecto.academy.utils.Event
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.regex.Pattern
 
 class MainViewModel(
@@ -31,6 +32,8 @@ class MainViewModel(
 
     val showEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
 
+    val error: MutableLiveData<String?> = MutableLiveData()
+
     val showProgressBar: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val onMovieHeaderlineClickEvent: MutableLiveData<Event<String>> = MutableLiveData()
@@ -45,13 +48,19 @@ class MainViewModel(
     private fun load(pattern: String): Job {
         return viewModelScope.launch {
             showProgressBar.value = true
-            val result = movieHeadlineRepository.search(pattern)
-            handleResult(result)
-            showProgressBar.value = false
+            try {
+                val result = movieHeadlineRepository.search(pattern)
+                handleResult(result)
+            }catch (e : Exception){
+                error.value = e.localizedMessage
+            }finally {
+                showProgressBar.value = false
+            }
         }
     }
 
     private fun handleResult(result: List<MovieHeadline>) {
+        error.value = null
         showEmpty.value = result.isEmpty()
         movies.value = result.map { it.asViewContent() }
     }
