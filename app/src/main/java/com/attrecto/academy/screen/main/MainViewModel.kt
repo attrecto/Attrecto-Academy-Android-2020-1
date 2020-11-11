@@ -52,11 +52,17 @@ class MainViewModel(
                 val result = movieHeadlineRepository.search(pattern)
                 handleResult(result)
             }catch (e : Exception){
-                error.value = e.localizedMessage
+                handleError(e)
             }finally {
                 showProgressBar.value = false
             }
         }
+    }
+
+    private fun handleError(exception: Exception){
+        error.value = exception.localizedMessage
+        showEmpty.value = false
+        movies.value = null
     }
 
     private fun handleResult(result: List<MovieHeadline>) {

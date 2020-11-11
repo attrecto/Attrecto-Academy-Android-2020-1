@@ -6,7 +6,7 @@ import com.attrecto.academy.model.MovieHeadline
 class MovieHeadlineRepository(private val service : MovieService) {
 
     suspend fun search(title: String): List<MovieHeadline> {
-        return service.search(title, "cd268ceb").Search
+        return service.search(title, "cd268ceb").Search ?: emptyList()
     }
 }
 
